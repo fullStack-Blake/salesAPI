@@ -19,7 +19,6 @@ const HTTP_PORT = process.env.PORT || 8080;
 
 // POST /api/sales (NOTE: This route must read the contents of the request body)
 
-//CHECK IF THIS req.body is right or not
 app.post("/api/sales", (req, res) => {
   myData
     .addNewSale(req.body)
@@ -31,7 +30,7 @@ app.post("/api/sales", (req, res) => {
 
 app.get("/api/sales", (req, res) => {
   myData
-    .getAllSales((req.query.page = 1), (req.query.perPage = 10))
+    .getAllSales(req.query.page, req.query.perPage)
     .then(data => res.json(data))
     .catch(err => console.log(`Error when loading all sales ${err}`));
 });
@@ -40,7 +39,7 @@ app.get("/api/sales", (req, res) => {
 
 app.get("/api/sales/:id", (req, res) => {
   myData
-    .getSaleById(id)
+    .getSaleById(req.params.id)
     .then(data => res.json(data))
     .catch(err => `Error when getting sale by id ${err}`);
 });
@@ -49,7 +48,7 @@ app.get("/api/sales/:id", (req, res) => {
 
 app.put("/api/sales/:id", (req, res) => {
   myData
-    .updateSaleById(req.body, id)
+    .updateSaleById(req.body, req.params.id)
     .then(data => res.json(data))
     .catch(err => `Error when Update existing sale ${err}`);
 });
@@ -58,7 +57,7 @@ app.put("/api/sales/:id", (req, res) => {
 
 app.delete("/api/sales/:id", (req, res) => {
   myData
-    .deleteSaleById(id)
+    .deleteSaleById(req.params.id)
     .then(data => res.json(data))
     .catch(err => `Error when deleting sale`);
 });
