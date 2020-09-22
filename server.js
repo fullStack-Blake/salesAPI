@@ -1,3 +1,13 @@
+/*********************************************************************************
+ * WEB422 – Assignment 1
+ * I declare that this assignment is my own work in accordance with Seneca Academic Policy.
+ * No part of this assignment has been copied manually or electronically from any other source
+ * (including web sites) or distributed to other students. *
+ * Name: SangYeup Han   Student ID: 165932187       Date: Sept.22nd.2020
+ * Heroku Link: https://morning-scrubland-27998.herokuapp.com/
+ *
+ * * ********************************************************************************/
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
